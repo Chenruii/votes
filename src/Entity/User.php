@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -48,10 +50,48 @@ class User implements UserInterface
      */
     private $roles =[];
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Conference", mappedBy="user")
+     */
+    private $conferences;
+
     public function __construct()
     {
+        $this->articles = new ArrayCollection();
         $this->roles = array('ROLE_USER');
     }
+
+    /**
+     * @return Collection|Conference[]
+     */
+    public function getConference(): Collection
+    {
+        return $this->conferences;
+    }
+
+    public function addConference(Conference $conference): self
+    {
+        if (!$this->conferences->contains($conference)) {
+            $this->conferences[] = $conference;
+            $conference->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeConference(Conference $conference): self
+    {
+        if ($this->conferences->contains($conference)) {
+            $this->conferences->removeElement($conference);
+            // set the owning side to null (unless already changed)
+            if ($conference->getUser() === $this) {
+                $conference->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
