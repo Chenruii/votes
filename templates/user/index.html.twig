@@ -14,9 +14,9 @@
 
         {% for user in users %}
             <h1>{{ user.firstname }}</h1>
-            {% for conference in user.conferences %}
-                <p>{{ conference.name }}</p>
-            {% endfor %}
+            {#{% for conference in user.conferences %}#}
+                {#<p>{{ conference.name }}</p>#}
+            {#{% endfor %}#}
         {% endfor %}
     </div>
 {% endblock %}

@@ -70,29 +70,6 @@ class User implements UserInterface
         return $this->conferences;
     }
 
-    public function addConference(Conference $conference): self
-    {
-        if (!$this->conferences->contains($conference)) {
-            $this->conferences[] = $conference;
-            $conference->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeConference(Conference $conference): self
-    {
-        if ($this->conferences->contains($conference)) {
-            $this->conferences->removeElement($conference);
-            // set the owning side to null (unless already changed)
-            if ($conference->getUser() === $this) {
-                $conference->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getId(): ?int
     {
         return $this->id;
@@ -170,5 +147,28 @@ class User implements UserInterface
     public function eraseCredentials(): void
     {
 
+    }
+
+    public function addConference(Conference $conference): self
+    {
+        if (!$this->conferences->contains($conference)) {
+            $this->conferences[] = $conference;
+            $conference->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeConference(Conference $conference): self
+    {
+        if ($this->conferences->contains($conference)) {
+            $this->conferences->removeElement($conference);
+            // set the owning side to null (unless already changed)
+            if ($conference->getUser() === $this) {
+                $conference->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

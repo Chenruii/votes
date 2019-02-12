@@ -59,6 +59,7 @@ class SecurityController extends AbstractController
             'error' => $authenticationUtils->getLastAuthenticationError(),
             'form' => $form->createView()
         ]);
+
     }
 
     /**
@@ -73,7 +74,7 @@ class SecurityController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
             return $this->redirectToRoute('home');   }
-        return $this->render('security/profile.html.twig', [
+        return $this->render('security/profil.html.twig', [
             'form' => $form->createView(),
             'users' => $userRepository->findAll(),
         ]);
