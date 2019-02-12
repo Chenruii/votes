@@ -1,0 +1,5 @@
+App\Entity\Conference:
+  conference_{1..10}:
+     name: <Text()>
+     description: <Text()>
+     user: '@user_*'
