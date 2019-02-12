@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <div class="content">
+        <ul>
+            {% for user in users %}
+                <h1>{{ user.firstname }}</h1>
+                {% for conference in user.conferences %}
+                    <p>{{ artticle.title }}</p>
+                {% endfor %}
+                {% for conference in conferences %}
+                    <a href="{{ path('details_conferences', { 'id': conference.id }) }}">{{ conference.title }}</a>
+                    <li>{{ conference.content }}</li>
+                    <li>{{ conference.image_url }}</li>
+                    {% if conference.user %}
+                        <li>{{ conference.user.id }}</li>
+                        <li>{{ conference.user.firstname }}</li>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </ul>
+
+    </div>
+{% endblock %}
