@@ -1,20 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Connexion!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <div class="content">
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <p>Welcome {{ app.user.firstname }}</p>
+            <p>Votre mail: {{ app.user.email }}</p>
+        {% else %}
+            <p>Welcome Anonymous</p>
+        {% endif %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/ruich/symfony4/projet/Projet/voted/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/ruich/symfony4/projet/Projet/voted/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
+        {{ path('user',{'id':user.id}) }}
+        {% for article in articles %}
+            {{ include('article/article_details.html.twig') }}
+        {% endfor %}
+
+    </div>
 {% endblock %}
