@@ -3,12 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Conference;
+use App\Form\ConferenceType;
 use App\Repository\ConferenceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class ConferenceController extends AbstractController
 {
@@ -62,6 +64,24 @@ class ConferenceController extends AbstractController
     }
 
 
+    /**
+     * @Route("/register", name="register_conference")
+     */
+    public function registerConference(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    {
+        $conference = new Conference();
+        $form = $this->createForm(ConferenceType::class, $conference);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+            return $this->redirectToRoute('register');
+        }
+        return $this->render('admin/createConference.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
 
 
 }
