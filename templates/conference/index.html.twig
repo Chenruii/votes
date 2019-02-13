@@ -1,16 +1,29 @@
-{% extends 'base.html.twig' %}
+{#{% extends 'base.html.twig' %}#}
 
-{% block body %}
-    <div class="content">
+{#{% block body %}#}
 
-        <h1>Conference</h1>
-        {{ conferences.id }} - {{ conferences.name }}
 
-        <h1>Update ✅</h1>
 
-        <br>
+    {#<div class="content">#}
 
-        <a href="{{ path('conference_remove', {'id': conference.id}) }}">Remove</a>
+        {#<h1><center>Vote des Conference en ligne</center> </h1>#}
 
-    </div>
-{% endblock %}
+        {#<h3>Voter pour votre conference preferer(soyer connecter)</h3>#}
+
+        {#{% for conferences in user.conference %}#}
+            {#{% for user in users %}#}
+                {#organisateur : {{ user.firstname }}<br>#}
+                {#conference : {{ conferences.name }}<br>#}
+                {#<br>#}
+            {#{% endfor %}#}
+        {#{% endfor %}#}
+
+        {#{{ conference.id }} - {{ conference.name }}#}
+
+        {#<h1>Update ✅</h1>#}
+
+        {#<br>#}
+        {#<a href="{{ path('remove_conference', {'name': conference.name}) }}">Remove</a>#}
+
+    {#</div>#}
+{#{% endblock %}#}

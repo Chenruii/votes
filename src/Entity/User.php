@@ -3,11 +3,10 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use Symfony\Component\Validator\Constraints\Collection;
 
 
 /**
@@ -68,6 +67,26 @@ class User implements UserInterface
     public function getConference(): Collection
     {
         return $this->conferences;
+    }
+
+    public function addConference(Conference $conference): self
+    {
+        if (!$this->conferences->contains($conference)) {
+            $this->conferences[] = $conference;
+            $conference->setUser($this);
+        }
+        return $this;
+    }
+    public function removeConference(Conference $conference): self
+    {
+        if ($this->conferences->contains($conference)) {
+            $this->conferences->removeElement($conference);
+            // set the owning side to null (unless already changed)
+            if ($conference->getUser() === $this) {
+                $conference->setUser(null);
+            }
+        }
+        return $this;
     }
 
     public function getId(): ?int
@@ -149,26 +168,6 @@ class User implements UserInterface
 
     }
 
-    public function addConference(Conference $conference): self
-    {
-        if (!$this->conferences->contains($conference)) {
-            $this->conferences[] = $conference;
-            $conference->setUser($this);
-        }
 
-        return $this;
-    }
 
-    public function removeConference(Conference $conference): self
-    {
-        if ($this->conferences->contains($conference)) {
-            $this->conferences->removeElement($conference);
-            // set the owning side to null (unless already changed)
-            if ($conference->getUser() === $this) {
-                $conference->setUser(null);
-            }
-        }
-
-        return $this;
-    }
 }

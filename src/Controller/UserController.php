@@ -21,6 +21,8 @@ class UserController extends AbstractController
     {
         $user = new User();
 
+
+
         $form = $this->createForm(UserType::class ,$user);
         $form->handleRequest($request);
 
@@ -61,4 +63,5 @@ class UserController extends AbstractController
     {
         return $this->render('home/index.html.twig');
     }
+
 }

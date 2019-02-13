@@ -4,19 +4,22 @@
 
 {% block body %}
 
+
     <div class="content">
 
+        <h1>Conference</h1>
         <ul>
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-            {{ form_end(form) }}
+            {% for conference in conferences %}
+                <a href="{{ path('details_conferences', { 'id': conference.id }) }}">{{ conference.title }}</a>
+                <li>{{ conference.content }}</li>
+                <br>
+                {% if conference.user %}
+                    <li>{{ conference.user.id }}</li>
+                    <li>{{ conference.user.firstname }}</li>
+                {% endif %}
+            {% endfor %}
         </ul>
 
-        {% for user in users %}
-            <h1>{{ user.firstname }}</h1>
-            {#{% for conference in user.conferences %}#}
-                {#<p>{{ conference.name }}</p>#}
-            {#{% endfor %}#}
-        {% endfor %}
+
     </div>
 {% endblock %}

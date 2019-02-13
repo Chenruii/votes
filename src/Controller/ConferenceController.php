@@ -22,17 +22,7 @@ class ConferenceController extends AbstractController
 
         ]);
     }
-    /**
-     * @Route("/", name="list_conferences")
-     *
-     */
-    public function conferences(ConferenceRepository $conferenceRepository)
-    {
-        return $this->render( 'conference/index.html.twig', [
-            'conferences' => $conferenceRepository->findAll(),
 
-        ]);
-    }
 
     /**
      * @Route("/conferences/{id}", name="details_conferences")
@@ -46,7 +36,7 @@ class ConferenceController extends AbstractController
         ]);
     }
     /**
-     * @Route("/user/remove/{id}", name="conference_remove")
+     * @Route("/user/remove/{id}", name="remove_conference")
      *  @ParamConverter("conference", options={"mapping"={"id"="id"}})
      */
     public function remove(Conference $conference, EntityManagerInterface $entityManager)
@@ -56,6 +46,8 @@ class ConferenceController extends AbstractController
         $entityManager ->flush();
         return $this->redirectToRoute('list_conferences');
     }
+
+
 
 
 }

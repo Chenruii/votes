@@ -1,21 +1,25 @@
-{% extends 'base.html.twig' %}
+{#{% extends 'base.html.twig' %}#}
 
-{% block title %}Connexion!{% endblock %}
+{#{% block title %}Connexion!{% endblock %}#}
 
-{% block body %}
+{#{% block body %}#}
 
-    <div class="content">
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <p>Welcome {{ app.user.firstname }}</p>
-            <p>Votre mail: {{ app.user.email }}</p>
-        {% else %}
-            <p>Welcome Anonymous</p>
-        {% endif %}
+    {#<div class="content">#}
+        {#{% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
+            {#<p>Welcome {{ app.user.firstname }}</p>#}
+            {#<p>Votre mail: {{ app.user.email }}</p>#}
+        {#{% else %}#}
+            {#<p>Welcome Anonymous</p>#}
+        {#{% endif %}#}
 
-        {{ path('user',{'id':user.id}) }}
-        {% for article in articles %}
-            {{ include('conference/conference_details.html.twig') }}
-        {% endfor %}
+        {#<h1>Vote des Conference en ligne </h1>#}
 
-    </div>
-{% endblock %}
+        {#<h2>Voter pour votre conference preferer(soyer connecter)</h2>#}
+
+        {#{{ path('user',{'id':user.id}) }}#}
+        {#{% for conference in conferences %}#}
+            {#{{ include('conference/details.html.twig') }}#}
+        {#{% endfor %}#}
+
+    {#</div>#}
+{#{% endblock %}#}

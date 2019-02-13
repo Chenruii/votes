@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-
+use App\Entity\Conference;
 use App\Entity\User;
 use App\Form\ConferenceType;
 use App\Form\UserLoginType;
@@ -16,6 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
+
 class SecurityController extends AbstractController
 {
     /**
@@ -27,6 +28,7 @@ class SecurityController extends AbstractController
             'controller_name' => 'SecurityController',
         ]);
     }
+
     /**
      * @Route("/register", name="register")
      */
@@ -63,9 +65,9 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/profile", name="profile")
+     * @Route("/profil", name="profile")
      */
-    public function profile(Request $request,EntityManagerInterface $entityManager,UserRepository $userRepository)
+    public function profile(Request $request, EntityManagerInterface $entityManager, UserRepository $userRepository)
     {
         $user = $this->getUser();
         $form = $this->createForm(UserProfilType::class, $user);
@@ -73,7 +75,8 @@ class SecurityController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($user);
             $entityManager->flush();
-            return $this->redirectToRoute('home');   }
+            return $this->redirectToRoute('home');
+        }
         return $this->render('security/profil.html.twig', [
             'form' => $form->createView(),
             'users' => $userRepository->findAll(),
@@ -91,7 +94,7 @@ class SecurityController extends AbstractController
 
         if (!$user) {
             throw $this->createNotFoundException(
-                'No user found for id '.$id
+                'No user found for id ' . $id
             );
         }
         $user->setFirstname('New user name!');
@@ -102,4 +105,8 @@ class SecurityController extends AbstractController
             'id' => $user->getId()
         ]);
     }
+
+
+
+
 }

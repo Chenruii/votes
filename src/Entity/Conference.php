@@ -33,6 +33,12 @@ class Conference
      * @ORM\JoinColumn(nullable=true)
      */
     private $user;
+//
+//    /**
+//     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="conferences")
+//     * @ORM\JoinColumn(nullable=false)
+//     */
+//    private $categories;
 
     public function getId(): ?int
     {
@@ -73,5 +79,7 @@ class Conference
 
         return $this;
     }
+
+
 
 }
