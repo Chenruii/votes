@@ -1,26 +1,41 @@
-{#{% extends 'base.html.twig' %}#}
 
-{#{% block title %}Hello AdminController!{% endblock %}#}
+{% extends 'base.html.twig' %}
 
-{#{% block body %}#}
+{% block title %}Espace login{% endblock %}
 
-    {#<div class="content">#}
-        {#<ul>#}
-            {#{% for user in users %}#}
-                {#<h1>{{ user.firstname }}</h1>#}
-                {#{% for conference in user.conferences %}#}
-                    {#<p>{{ conference.name }}</p>#}
-                {#{% endfor %}#}
-                {#{% for conference in conferences %}#}
-                    {#<a href="{{ path('details_conferences', { 'id': conference.id }) }}">{{ conference.name }}</a>#}
-                    {#<li>{{ conference.description }}</li>#}
-                    {#{% if conference.user %}#}
-                        {#<li>{{ conference.user.id }}</li>#}
-                        {#<li>{{ conference.user.firstname }}</li>#}
-                    {#{% endif %}#}
-                {#{% endfor %}#}
-            {#{% endfor %}#}
-        {#</ul>#}
+{% block body %}
+    <!-- Hero section -->
+    <section class="hero-section set-bg" data-setbg="img/bg.jpg">
+        <div class="container h-100">
+            <div class="hero-content text-white">
+                <div class="row">
+                    <div class="col-lg-6 pr-0">
+                        {#<ul>#}
+                            {#{% for user in users %}#}
+                                {#<h1>{{ user.firstname }}</h1>#}
+                                {#{% for conference in user.conferences %}#}
+                                    {#<p>{{ conference.name }}</p>#}
+                                {#{% endfor %}#}
+                                {#{% for conference in conferences %}#}
+                                    {#<a href="{{ path('details_conferences', { 'id': conference.id }) }}">{{ conference.name }}</a>#}
+                                    {#<li>{{ conference.description }}</li>#}
+                                    {#{% if conference.user %}#}
+                                        {#<li>{{ conference.user.id }}</li>#}
+                                        {#<li>{{ conference.user.firstname }}</li>#}
+                                    {#{% endif %}#}
+                                {#{% endfor %}#}
+                            {#{% endfor %}#}
+                        {#</ul>#}
+                        <p>Gestion admin</p>
+                    </div>
+                </div>
+                <div class="hero-rocket">
+                    <img src="./img/rocket.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero section end -->
+{% endblock %}
 
-    {#</div>#}
-{#{% endblock %}#}
+

@@ -29,7 +29,7 @@ class AdminController extends AbstractController
     {
         $users = $this->getDoctrine()->getRepository(User::class)->findAll();
         $conferences = $this->getDoctrine()->getRepository(Conference::class)->findAll();
-        return $this->render('admin/user.html.twig', [
+        return $this->render('admin/index.html.twig', [
             'users'=>$users,
             'conferences'=>$conferences,
         ]);
