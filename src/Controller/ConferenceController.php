@@ -7,6 +7,7 @@ use App\Repository\ConferenceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ConferenceController extends AbstractController
@@ -19,9 +20,22 @@ class ConferenceController extends AbstractController
     {
         return $this->render( 'conference/index.html.twig', [
             'conferences' => $conferenceRepository->findAll(),
+        ]);
+    }
+
+
+    /**
+     * @Route("/conference", name="list_conferences")
+     *
+     */
+    public function conferences(ConferenceRepository $conferenceRepository)
+    {
+        return $this->render( 'conference/index.html.twig', [
+            'conferences' => $conferenceRepository->findAll(),
 
         ]);
     }
+
 
 
     /**
