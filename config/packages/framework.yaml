@@ -16,8 +16,8 @@ framework:
     php_errors:
         log: true
 
-    framework:
-        # other stuff here
-
-        translator:
-          enabled: false
+#    framework:
+#        # other stuff here
+#
+#        translator:
+#          enabled: false
