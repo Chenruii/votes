@@ -3,11 +3,40 @@
 {% block title %}Espace login{% endblock %}
 
 {% block body %}
-    <div class="content">
+    <!-- Hero section -->
+    <section class="hero-section set-bg" data-setbg="img/bg.jpg">
+        <div class="container h-100">
+            <div class="hero-content text-white">
+                <div class="row">
+                    <div class="col-lg-6 pr-0">
+                        <h2>Espace login</h2>
+                        <p>connecter pour voter</p>
+                       {#{{ form_start(form) }}#}
+                        {#{{ form_row(form.email) }}#}
+                        {#{{ form_row(form.password) }}#}
+                        {#{{ form_end(form) }}#}
 
-        {{ form_start(form) }}
-        {{ form_row(form.email) }}
-        {{ form_row(form.password) }}
-        {{ form_end(form) }}
-    </div>
+                        <form action="{{ path('login') }}" method="post">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input required name="_username" type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input required name="_password" type="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success">Connexion</buttton>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="hero-rocket">
+                    <img src="./img/rocket.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero section end -->
 {% endblock %}
+

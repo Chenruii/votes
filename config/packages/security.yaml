@@ -13,13 +13,13 @@ security:
             security: false
 
         main:
-            anonymous: ~
+            anonymous: true
             provider: our_db_provider
             form_login:
                 login_path: login
                 check_path: login
-                username_parameter: "login_user[email]"
-                password_parameter: "login_user[password]"
+#                username_parameter: "login_user[email]"
+#                password_parameter: "login_user[password]"
             logout:
                 path:   /logout
                 target: /

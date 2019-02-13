@@ -3,17 +3,29 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-
-    <div class="content">
-        <h1>Register ✅</h1>
-
-        {{ form_start(form) }}
-        {{ form_row(form.email) }}
-        {{ form_row(form.password.first) }}
-        {{ form_row(form.password.second) }}
-        {{ form_row(form.firstname) }}
-        {{ form_row(form.lastname) }}
-        {{ form_row(form.submit) }}
-        {{ form_end(form) }}
-    </div>
+        <!-- Hero section -->
+    <section class="hero-section set-bg" data-setbg="img/bg.jpg">
+        <div class="container h-100">
+            <div class="hero-content text-white">
+                <div class="row">
+                    <div class="col-lg-6 pr-0">
+                        <h2>Espace Register</h2>
+                        <p>Inscrire pour voter</p>
+                        {{ form_start(form) }}
+                        {{ form_row(form.email) }}
+                        {{ form_row(form.password.first) }}
+                        {{ form_row(form.password.second) }}
+                        {{ form_row(form.firstname) }}
+                        {{ form_row(form.lastname) }}
+                        {{ form_row(form.submit) }}
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+                <div class="hero-rocket">
+                    <img src="./img/rocket.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero section end -->
 {% endblock %}
