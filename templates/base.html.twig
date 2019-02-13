@@ -102,7 +102,7 @@
                     <li><a href="{{ path('admin') }}">Admin</a></li>
                 {% endif %}
                 {#{{ render(controller(#}
-                {#'App\\Controller\SearchController::searchBar'#}
+                {#'src:Post:searchBar'#}
                 {#)) }}#}
         </ul>
         <div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -119,6 +119,9 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/circle-progress.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="{{ asset('bundles/pugxautocompleter/js/autocompleter-jqueryui.js') }}"></script>
+
 
 {% endblock %}
 </body>

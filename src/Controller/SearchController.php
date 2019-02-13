@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Conference;
 use Doctrine\DBAL\Types\TextType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class SearchController extends AbstractController
@@ -19,20 +21,20 @@ class SearchController extends AbstractController
         ]);
     }
 
-    public function searchBar()
+    public function searchAction()
     {
-        $form = $this->createFormBuilder(null)
-            ->add('query', TextType::class)
-            ->add('search', SubmitType::class, [
-                'attr' => [
-                    'class' => 'btn btn-primary'
-                ]
-            ])
+        $conference = new  Conference();
+
+        $form = $this->createFormBuilder( $conference, array(
+            'action' => $this->generateUrl('homepage').'?term=',
+            'method' => 'GET',
+        ) )
+            ->add('titre', null, ['label' => ' Barre de recherche'] )
             ->getForm();
 
-        return $this->render('  ', [
-            'form' => $form->createView()
-        ]);
+
+        return $this->render(':conference/index.html.twig', ['form' => $form->createView() ]);
     }
+
 
 }

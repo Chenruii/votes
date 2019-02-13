@@ -19,32 +19,50 @@ class ConferenceRepository extends ServiceEntityRepository
         parent::__construct($registry, Conference::class);
     }
 
-    // /**
-    //  * @return Conference[] Returns an array of Conference objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+////    // /**
+////    //  * @return Conference[] Returns an array of Conference objects
+////    //  */
+////    /*
+//    public function findByExampleField($value)
+//    {
+//        return $this->createQueryBuilder('c')
+//            ->andWhere('c.exampleField = :val')
+//            ->setParameter('val', $value)
+//            ->orderBy('c.id', 'ASC')
+//            ->setMaxResults(10)
+//            ->getQuery()
+//            ->getResult()
+//        ;
+//    }
+//
+//
+//
+//    public function findOneBySomeField($value): ?Conference
+//    {
+//        return $this->createQueryBuilder('c')
+//            ->andWhere('c.exampleField = :val')
+//            ->setParameter('val', $value)
+//            ->getQuery()
+//            ->getOneOrNullResult()
+//        ;
+//    }
 
-    /*
-    public function findOneBySomeField($value): ?Conference
+    /**
+     * @param string $name
+     *
+     * @return array
+     */
+    public function findLike($name)
     {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
+        return $this
+            ->createQueryBuilder('a')
+            ->where('a.name LIKE :name')
+            ->setParameter( 'titre', "%$name%")
+            ->orderBy('a.name')
+            ->setMaxResults(5)
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->execute()
+            ;
     }
-    */
+
 }

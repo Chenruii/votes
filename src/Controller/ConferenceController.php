@@ -7,6 +7,7 @@ use App\Form\ConferenceRegisterType;
 use App\Form\ConferenceType;
 use App\Repository\ConferenceRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -106,6 +107,33 @@ class ConferenceController extends AbstractController
             'form' => $form->createView(),
             'conference' => $conference,
         ));
+    }
+
+    public function searchAction()
+    {
+        $conference = new  Conference();
+
+        $form = $this->createFormBuilder( $conference, array(
+            'action' => $this->generateUrl('home').'?term=',
+            'method' => 'GET',
+        ) )
+            ->add('name', null, ['label' => ' Barre de recherche'] )
+            ->getForm();
+
+
+        return $this->render(':home/index.html.twig', ['form' => $form->createView() ]);
+    }
+
+    /**
+     * @Route("/search-conference", name="search_conference", defaults={"_format"="json"})
+     * @Method("GET")
+     */
+    public function searchConferenceAction(Request $request)
+    {
+        $q = $request->query->get('term'); // use "term" instead of "q" for jquery-ui
+        $results = $this->getDoctrine()->getRepository('AppBundle:Article')->findLike($q);
+
+        return $this->render("home/search.json.twig", ['conferences' => $results]);
     }
 
 }

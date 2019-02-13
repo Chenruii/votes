@@ -1,0 +1,4 @@
+[{% for conference in conferences -%}
+    {{ {value: conference.id, label: conference.name}|json_encode|raw }}
+    {%- if not loop.last %},{% endif -%}
+    {%- endfor %}]

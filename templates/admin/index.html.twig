@@ -1,7 +1,7 @@
 
 {% extends 'base.html.twig' %}
 
-{% block title %}Espace login{% endblock %}
+{% block title %}Admin{% endblock %}
 
 {% block body %}
     <!-- Hero section -->
@@ -10,14 +10,15 @@
             <div class="hero-content text-white">
                 <div class="row">
                     <div class="col-lg-6 pr-0">
-                        <p>Gestion admin</p>
+                        <h3>Gestion admin</h3><br>
 
-                        <a href="{{ path('edit_conference', {'name': conference.name}) }}">Edit</a>
-                        <a href="{{ path('remove_conference', {'id': conference.id}) }}">Remove</a>
+                        <ul>
+                            {% for user in users %}
+                                <h6>{{ user.firstname }} - {{ user.lastname }}</h6>
 
-                        {#<ul>#}
-                            {#{% for user in users %}#}
-                                {#<h1>{{ user.firstname }}</h1>#}
+                                {#<a href="{{ path('remove_conference_', {'id': conference.id}) }}">Remove</a>#}
+                                {#<a href="{{ path('user_remove', {'id': user.id}) }}">Remove</a>#}
+
                                 {#{% for conference in user.conferences %}#}
                                     {#<p>{{ conference.name }}</p>#}
                                 {#{% endfor %}#}
@@ -29,8 +30,8 @@
                                         {#<li>{{ conference.user.firstname }}</li>#}
                                     {#{% endif %}#}
                                 {#{% endfor %}#}
-                            {#{% endfor %}#}
-                        {#</ul>#}
+                            {% endfor %}
+                        </ul>
                     </div>
                 </div>
                 <div class="hero-rocket">

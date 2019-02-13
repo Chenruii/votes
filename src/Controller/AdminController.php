@@ -57,16 +57,16 @@ class AdminController extends AbstractController
 //     */
 //    public function removeUser(User $user, EntityManagerInterface $entityManager)
 //    {
-//        $conferences = $user->getConference()s();
-//        foreach ($conferences as $conference){
-//            $conference->setUser(null);
+//        $users = $user->getUser();
+//        foreach ($users as $user){
+//            $user->setUser(null);
 //        }
 //        $entityManager->remove($user);
 //        $entityManager ->flush();
 //        $this->addFlash('success', 'User removed!');
 //        return $this->redirectToRoute('home');
 //    }
-//
+
 //
 //    /**
 //     * @Route("/admin/conferences", name="admin_conferences")
