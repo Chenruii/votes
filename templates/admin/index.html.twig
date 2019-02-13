@@ -11,6 +11,10 @@
                 <div class="row">
                     <div class="col-lg-6 pr-0">
                         <p>Gestion admin</p>
+
+                        <a href="{{ path('edit_conference', {'name': conference.name}) }}">Edit</a>
+                        <a href="{{ path('remove_conference', {'id': conference.id}) }}">Remove</a>
+
                         {#<ul>#}
                             {#{% for user in users %}#}
                                 {#<h1>{{ user.firstname }}</h1>#}

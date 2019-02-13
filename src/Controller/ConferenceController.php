@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Conference;
+use App\Form\ConferenceRegisterType;
 use App\Form\ConferenceType;
 use App\Repository\ConferenceRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -67,14 +68,14 @@ class ConferenceController extends AbstractController
     /**
      * @Route("/register", name="register_conference")
      */
-    public function registerConference(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    public function registerConference(Request $request)
     {
         $conference = new Conference();
-        $form = $this->createForm(ConferenceType::class, $conference);
+        $form = $this->createForm(ConferenceRegisterType::class, $conference);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
+            $entityManager->persist($conference);
             $entityManager->flush();
             return $this->redirectToRoute('register');
         }
@@ -83,5 +84,28 @@ class ConferenceController extends AbstractController
         ]);
     }
 
+
+    /**
+     * @Route("/conferences/edit/{id}", name="edit_conference")
+     * @ParamConverter("conference", options={"mapping"={"id"="id"}})
+     */
+    public function update(Request $request, Conference $conference)
+    {
+        $form = $this->createForm(ConferenceType::class, $conference);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($conference);
+            $entityManager->flush();
+
+            $this->addFlash('notice', 'Your conference is update!');
+            return $this->redirectToRoute('list_conferences');
+        }
+        return $this->render('admin/editConference.html.twig', array(
+            'form' => $form->createView(),
+            'conference' => $conference,
+        ));
+    }
 
 }

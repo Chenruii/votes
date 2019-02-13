@@ -17,10 +17,6 @@ class ConferenceType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('category',EntityType::class,[
-                'class' => Category::class,
-                'choice' => 'name'
-            ])
             ->add('submit',SubmitType::class)
         ;
     }
