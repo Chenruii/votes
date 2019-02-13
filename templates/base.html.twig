@@ -48,8 +48,13 @@
             </div>
             <div class="nav-warp">
                 <div class="user-panel">
-                    <a href="{{ path('login') }}">Login</a> /
-                    <a href="{{ path('register') }}">Register</a>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <a href="{{ path('logout') }}">Logout</a>
+                    {% else %}
+                        <a href="{{ path('login') }}">Login</a> /
+                        <a href="{{ path('register') }}">Register</a>
+                    {% endif %}
+
                 </div>
                 <ul class="main-menu">
                     <ul>
@@ -59,7 +64,6 @@
                         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                             <li><a href="{{ path('profile') }}">Profil</a></li>
                             <li><a href="{{ path('admin') }}">Admin</a></li>
-                            <li><a href="{{ path('logout') }}">Logout</a></li>
                         {% endif %}
                         {#{{ render(controller(#}
                         {#'App\\Controller\SearchController::searchBar'#}
@@ -90,11 +94,16 @@
             <br>
         </div>
         <ul class="footer-menu">
-            <li><a href="">Home</a></li>
-            <li><a href="">Conference</a></li>
-            <li><a href="">User</a></li>
-            <li><a href="">Register</a></li>
-
+                <li><a href="{{ path('home') }}">Home</a></li>
+                <li><a href="{{ path('list_conferences') }}">Conference</a></li>
+                <li><a href="{{ path('user') }}">User</a></li>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <li><a href="{{ path('profile') }}">Profil</a></li>
+                    <li><a href="{{ path('admin') }}">Admin</a></li>
+                {% endif %}
+                {#{{ render(controller(#}
+                {#'App\\Controller\SearchController::searchBar'#}
+                {#)) }}#}
         </ul>
         <div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <i class="fa fa-heart-o" aria-hidden="true"></i> by Lucie</a>
