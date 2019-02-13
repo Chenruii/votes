@@ -28,8 +28,7 @@
         <div class="container h-100">
             <div class="hero-content text-white">
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <p>Welcome {{ app.user.firstname }}</p>
-                    <p>Votre mail: {{ app.user.email }}</p>
+                    <p>Welcome {{ app.user.firstname }}   mail: {{ app.user.email }}</p>
                 {% else %}
                     <p>Welcome Anonymous</p>
                 {% endif %}
