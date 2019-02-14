@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Conference;
 use App\Entity\User;
 use Doctrine\DBAL\Types\TextType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -59,4 +60,14 @@ class HomeController extends AbstractController
         ]);
 
     }
+
+    /**
+     * @Route("/user/profile-{byId}", name="home_user_profile")
+     * @ParamConverter("user", options={"mapping"={"byId"="id"}})
+     */
+    public function user(Request $request, User $user){
+        $conferences = $this->getDoctrine()->getRepository(Conference::class)->findBy(array('user'=>$user));
+        return $this->render('user/index.html.twig', array('user'=>$user, 'videos'=>$conferences));
+    }
+
 }

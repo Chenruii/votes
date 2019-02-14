@@ -60,8 +60,8 @@
 		--><input name="stars" id="e1" type="radio"></a><label for="e1">☆</label>
                                     </div>
                                 </td>
-                                <td>edit</td>
-                                <td>remove</td>
+                                {#<td><a href="{{ path('update_conference', {'byId':conference.id}) }}"><span class="glyphicon glyphicon-pencil"></span>Edit</a></td>#}
+                                <td><a href="{{ path('remove_conference', {'id':conference.id}) }}"><span class="glyphicon glyphicon-trash"></span> Remove</a></td>
                                 <br>
                             </tr>
                             {% endfor %}
