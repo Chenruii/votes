@@ -11,21 +11,23 @@
                 <div class="row">
                     <div class="col-lg-6 pr-0">
                         <h1>Membre</h1>
-                        <ul>
-                            {#{% for conferences in conference %}#}
-                                {#<a href="{{ path('details_conferences', { 'id': conference.id }) }}">{{ conference.title }}</a>#}
-                                {#<li>{{ conference.content }}</li>#}
-                                {#<br>#}
-                                {#{% if conference.user %}#}
-                                    {#<li>{{ conference.user.id }}</li>#}
-                                    {#<li>{{ conference.user.firstname }}</li>#}
-                                {#{% endif %}#}
-                            {#{% endfor %}#}
-                            {% for user in users %}
-                                Membre : {{user.firstname }}<br>
-                                <br>
-                            {% endfor %}
-                        </ul>
+                            <table id="user" class="centre" border="2" align="center" cellspacing="0" cellpadding="2">
+                                <tr>
+                                    <td>Nom</td>
+                                    <td>Prenom</td>
+                                    <td>Edition</td>
+                                    <td>Remove</td>
+                                </tr>
+                                {% for user in users %}
+                                    <tr>
+                                        <td>{{user.firstname }}</td><br/>
+                                        <td>{{user.lastname }}</td><br/>
+                                        <td>edit</td>
+                                        <td>remove</td>
+
+                                    </tr>
+                                {% endfor %}
+                            </table>
                     </div>
                 </div>
                 <div class="hero-rocket">
