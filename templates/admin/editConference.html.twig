@@ -1,35 +1,35 @@
-{% extends 'base.html.twig' %}
+{#{% extends 'base.html.twig' %}#}
 
-{% block title %}Conference {% endblock %}
+{#{% block title %}Conference {% endblock %}#}
 
-{% block body %}
+{#{% block body %}#}
 
-    <!-- Hero section -->
-    <section class="hero-section set-bg" data-setbg="img/bg.jpg">
-        <div class="container h-100">
-            <div class="hero-content text-white">
-                <div class="row">
-                    <div class="col-lg-6 pr-0">
-                        <h4>Profil </h4>
-                        <div class="content">
-                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                                <p>User: {{ app.user.firstname }} - {{ app.user.lastname }}</p>
+    {#<!-- Hero section -->#}
+    {#<section class="hero-section set-bg" data-setbg="img/bg.jpg">#}
+        {#<div class="container h-100">#}
+            {#<div class="hero-content text-white">#}
+                {#<div class="row">#}
+                    {#<div class="col-lg-6 pr-0">#}
+                        {#<h4>Profil </h4>#}
+                        {#<div class="content">#}
+                            {#{% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
+                                {#<p>User: {{ app.user.firstname }} - {{ app.user.lastname }}</p>#}
 
-                            {% else %}
-                                <p>Welcome Anonymous</p>
-                            {% endif %}
-                            <h4>Mise a jour</h4>
-                            {{ form_start(form) }}
-                            {{ form_widget(form) }}
-                            {{ form_end(form) }}
-                    </div>
-                </div>
-                <div class="hero-rocket">
-                    <img src="./img/rocket.png" alt="">
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Hero section end -->
+                            {#{% else %}#}
+                                {#<p>Welcome Anonymous</p>#}
+                            {#{% endif %}#}
+                            {#<h4>Mise a jour</h4>#}
+                            {#{{ form_start(form) }}#}
+                            {#{{ form_widget(form) }}#}
+                            {#{{ form_end(form) }}#}
+                    {#</div>#}
+                {#</div>#}
+                {#<div class="hero-rocket">#}
+                    {#<img src="./img/rocket.png" alt="">#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+    {#</section>#}
+    {#<!-- Hero section end -->#}
 
-{% endblock %}
+{#{% endblock %}#}

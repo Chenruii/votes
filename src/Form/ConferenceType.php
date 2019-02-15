@@ -2,10 +2,8 @@
 
 namespace App\Form;
 
-use App\Entity\Category;
 use App\Entity\Conference;
 use PUGX\AutocompleterBundle\Form\Type\AutocompleteType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,7 +14,7 @@ class ConferenceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name',AutocompleteType::class, ['class' => 'AppBundle:Conference'])
+            ->add('name')
             ->add('description')
             ->add('submit',SubmitType::class)
         ;
