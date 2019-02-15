@@ -1,16 +1,16 @@
-{#{% extends 'base.html.twig' %}#}
+{% extends 'base.html.twig' %}
 
-{#{% block title %}VIEW USER !{% endblock %}#}
+{% block title %}VIEW USER !{% endblock %}
 
-{#{% block body %}#}
+{% block body %}
 
-    {#<div class="content">#}
+    <div class="content">
 
-        {#{% for user in users %}#}
-            {#<h1>{{ user.firstname }}</h1>#}
-            {#{% for conference in user.conferences %}#}
-            {#<p>{{ conference.name }}</p>#}
-            {#{% endfor %}#}
-        {#{% endfor %}#}
-    {#</div>#}
-{#{% endblock %}#}
+        {% for user in users %}
+            <h1>{{ user.firstname }}</h1>
+            {% for conference in user.conferences %}
+            <p>{{ conference.name }}</p>
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endblock %}

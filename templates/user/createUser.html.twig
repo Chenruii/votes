@@ -1,14 +1,14 @@
-{#{% extends 'base.html.twig' %}#}
+{% extends 'base.html.twig' %}
 
-{#{% block title %}ADD USER !{% endblock %}#}
+{% block title %}ADD USER !{% endblock %}
 
-{#{% block body %}#}
+{% block body %}
 
-    {#<div class="content">#}
-        {#<ul>#}
-            {#{{ form_start(form) }}#}
-            {#{{ form_widget(form) }}#}
-            {#{{ form_end(form) }}#}
-        {#</ul>#}
-    {#</div>#}
-{#{% endblock %}#}
+    <div class="content">
+        <ul>
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </ul>
+    </div>
+{% endblock %}

@@ -30,86 +30,57 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
 
+
+        <link href="{{ asset ('//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css') }}">
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <!------ Include the above in your HEAD tag ---------->
     {% endblock %}
 </head>
-<body>
+{% block header %}
 
-
-        <!-- Page Preloder -->
-        <div id="preloder">
-            <div class="loader"></div>
-        </div>
-
-        <!-- Header section -->
-        <header class="header-section">
-            <a href="./base.html.twig" class="site-logo"><img src="" alt=""></a>
-            <div class="nav-switch">
-                <i class="fa fa-bars"></i>
-            </div>
-            <div class="nav-warp">
-                <div class="user-panel">
-                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <a href="{{ path('logout') }}">Logout</a>
-                    {% else %}
-                        <a href="{{ path('login') }}">Login</a> /
-                        <a href="{{ path('register') }}">Register</a>
-                    {% endif %}
-
-                </div>
-                <ul class="main-menu">
-                    <ul>
-                        <li><a href="{{ path('home') }}">Home</a></li>
-                        <li><a href="{{ path('list_conferences') }}">Conference</a></li>
-                        <li><a href="{{ path('user') }}">User</a></li>
-                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                            <li><a href="{{ path('profile') }}">Profil</a></li>
-                            <li><a href="{{ path('admin') }}">Admin</a></li>
-                        {% endif %}
-                        {#{{ render(controller(#}
-                        {#'App\\Controller\SearchController::searchBar'#}
-                        {#)) }}#}
-                    </ul>
-                </ul>
-            </div>
-        </header>
-        <!-- Header section end -->
-
-
-{% block body %}{% endblock %}
-
-
-<!-- Footer section -->
-<footer class="footer-section">
-    {% block footer %}
-    <div class="container">
-        <div class="footer-widget about-widget">
-            <div class="fw-social social">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-
-            </div>
-            <br>
-        </div>
-        <ul class="footer-menu">
-                <li><a href="{{ path('home') }}">Home</a></li>
-                <li><a href="{{ path('list_conferences') }}">Conference</a></li>
-                <li><a href="{{ path('user') }}">User</a></li>
-                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <li><a href="{{ path('profile') }}">Profil</a></li>
-                    <li><a href="{{ path('admin') }}">Admin</a></li>
-                {% endif %}
-                {#{{ render(controller(#}
-                {#'src:Post:searchBar'#}
-                {#)) }}#}
-        </ul>
-        <div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <i class="fa fa-heart-o" aria-hidden="true"></i> by Lucie</a>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
     </div>
-    {% endblock %}
-</footer>
-<!-- Footer top section end -->
 
+    <!-- Header section -->
+    <header class="header-section">
+        <a href="./base.html.twig" class="site-logo"><img src="" alt=""></a>
+        <div class="nav-switch">
+            <i class="fa fa-bars"></i>
+        </div>
+        <div class="nav-warp">
+            <div class="user-panel">
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <a href="{{ path('logout') }}">Logout</a>
+                {% else %}
+                    <a href="{{ path('login') }}">Login</a> /
+                    <a href="{{ path('register') }}">Register</a>
+                {% endif %}
+
+            </div>
+            <ul class="main-menu">
+                <ul>
+                    <li><a href="{{ path('home') }}">Home</a></li>
+                    <li><a href="{{ path('list_conferences') }}">Conference</a></li>
+                    <li><a href="{{ path('user') }}">User</a></li>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li><a href="{{ path('profile') }}">Profil</a></li>
+                        <li><a href="{{ path('admin') }}">Admin</a></li>
+                    {% endif %}
+                    {#{{ render(controller(#}
+                    {#'App\\Controller\SearchController::searchBar'#}
+                    {#)) }}#}
+                </ul>
+            </ul>
+        </div>
+    </header>
+    <!-- Header section end -->
+{% endblock %}
+
+<body>
+{% block body %}{% endblock %}
 {% block javascripts %}
     <!--====== Javascripts & Jquery ======-->
     <script src="js/jquery-3.2.1.min.js"></script>
@@ -119,8 +90,38 @@
     <script src="js/main.js"></script>
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="{{ asset('bundles/pugxautocompleter/js/autocompleter-jqueryui.js') }}"></script>
-
-
 {% endblock %}
 </body>
+<footer>
+    <!-- Footer section -->
+    <footer class="footer-section">
+        {% block footer %}
+            <div class="container">
+                <div class="footer-widget about-widget">
+                    <div class="fw-social social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                    </div>
+                    <br>
+                </div>
+                <ul class="footer-menu">
+                    <li><a href="{{ path('home') }}">Home</a></li>
+                    <li><a href="{{ path('list_conferences') }}">Conference</a></li>
+                    <li><a href="{{ path('user') }}">User</a></li>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li><a href="{{ path('profile') }}">Profil</a></li>
+                        <li><a href="{{ path('admin') }}">Admin</a></li>
+                    {% endif %}
+                    {#{{ render(controller(#}
+                    {#'src:Post:searchBar'#}
+                    {#)) }}#}
+                </ul>
+                <div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <i class="fa fa-heart-o" aria-hidden="true"></i> by Lucie</a>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
+            </div>
+        {% endblock %}
+    </footer>
+    <!-- Footer top section end -->
+</footer>
 </html>
