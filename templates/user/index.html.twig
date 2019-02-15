@@ -22,16 +22,16 @@
                                 <tr>
                                     <td>{{user.firstname }}</td><br/>
                                     <td>{{user.lastname }}</td><br/>
-                                    {#<td><a href="{{ path('update_user', {'byId':conference.id}) }}"><span class="glyphicon glyphicon-pencil"></span>Edit</a></td>#}
-                                    {#<td><a href="{{ path('remove_user', {'id':conference.id}) }}"><span class="glyphicon glyphicon-trash"></span> Remove</a></td>#}
+                                    <td><a href="{{ path('update_user', {'byId':conference.id}) }}"><span class="glyphicon glyphicon-pencil"></span>Edit</a></td>
+                                    <td><a href="{{ path('remove_user', {'id':conference.id}) }}"><span class="glyphicon glyphicon-trash"></span> Remove</a></td>
                                 </tr>
                             {% endfor %}
                         </table>
                     </div>
                 </div>
-                <div class="hero-rocket">
-                    <img src="./img/rocket.png" alt="">
-                </div>
+                {#<div class="hero-rocket">#}
+                    {#<img src="./img/rocket.png" alt="">#}
+                {#</div>#}
             </div>
         </div>
     </section>
